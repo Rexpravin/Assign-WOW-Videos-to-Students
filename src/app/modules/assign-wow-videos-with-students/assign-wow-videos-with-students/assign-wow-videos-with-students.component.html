@@ -1,0 +1,1003 @@
+<main class="p-[8px]">
+  <!-- Header -->
+  <section class="flex items-center w-full text-[16px] font-semibold ">
+    <div class="flex justify-between w-full xs:gap-0">
+      <div class="flex gap-1 relative w-[90%] lt-md:flex-col header">
+        <div class="flex xs:flex-wrap items-center div-1">
+          <div class="flex gap-2 items-center text-sm label-1 mr-1 mt-2">
+            <span>Assign</span>
+            <span class="red-heading flex">WOW </span>
+            <span class="red-heading flex">Video </span>
+            <span>to</span>
+          </div>
+          <!-- Drop Down for Select Class -->
+          <div class="drop-down-class mt-2">
+            <div class="relative">
+              <div
+                class="cursor-pointer absolute top-0 flex px-3 items-center h-full w-full"
+                (click)="selectRef.open()"
+              >
+                <mat-label
+                  *ngIf="selectedOption"
+                  class="text-ellipsis"
+                  style="
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  "
+                  ><span class="!text-red" style="color: red">{{
+                    selectedOption.user
+                  }}</span>
+                  /
+                  <span class="!text-red" style="color: red">
+                    {{ selectedOption.class }}
+                  </span>
+                  /
+                  <span class="!text-red" style="color: red">
+                    {{ selectedOption.section }}
+                  </span></mat-label
+                >
+              </div>
+
+              <mat-form-field
+                appearance="outline"
+                class="w-full component--mat-form-field__custom-input absolute top-0"
+              >
+                <mat-label class="text-sm"
+                  >Please Select the Relevant Class from:</mat-label
+                >
+                <mat-select
+                  #selectRef
+                  appearance="outline"
+                  class=""
+                  required
+                  [(value)]="selectedOption"
+                  (selectionChange)="onSelectSelectedItem(selectedOption)"
+                  style="visibility: hidden"
+                >
+                  <ng-container *ngFor="let class of selectClass">
+                    <mat-option [value]="class"
+                      ><span class="!text-red" style="color: red">{{
+                        class.user
+                      }}</span>
+                      /
+                      <span class="!text-red" style="color: red">
+                        {{ class.class }}
+                      </span>
+                      /
+                      <span class="!text-red" style="color: red">
+                        {{ class.section }}
+                      </span></mat-option
+                    >
+                  </ng-container>
+                </mat-select>
+
+                <mat-icon matSuffix class="px-2">arrow_drop_down</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-1 xs:flex-wrap items-center xs:w-[100%] div-2 ">
+          <div class="text-sm flex gap-1 mt-2">
+            <span>registered</span>
+            <span>in</span>
+          </div>
+          <!-- Drop Down For Select Subject  -->
+          <div class="w-full mt-2">
+            <div class="relative">
+              <div
+                class="cursor-pointer absolute top-0 flex px-3 items-center h-full w-full"
+                (click)="selectRef2.open()"
+              >
+                <mat-label
+                  *ngIf="selectedOption2"
+                  class="text-ellipsis"
+                  style="
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  "
+                  ><span class="!text-red" style="color: red">{{
+                    selectedOption2.subject
+                  }}</span>
+                  -
+                  <span class="!text-red" style="color: red">
+                    {{ selectedOption2.term }}
+                  </span>
+
+                  <!-- <span class="!text-red" style="color: red">
+                    {{ selectedOption.section }}
+                  </span> -->
+                </mat-label>
+              </div>
+
+              <mat-form-field
+                appearance="outline"
+                class="w-full component--mat-form-field__custom-input absolute top-0"
+              >
+                <mat-label class="text-sm"
+                  >Please Select the Relevant Subject from:</mat-label
+                >
+                <mat-select
+                  #selectRef2
+                  appearance="outline"
+                  class=""
+                  required
+                  [(value)]="selectedOption2"
+                  (selectionChange)="onSelectSelectedItem2(selectedOption2)"
+                  style="visibility: hidden"
+                >
+                  <ng-container *ngFor="let class of selectSubject">
+                    <mat-option [value]="class"
+                      ><span class="!text-red" style="color: red">{{
+                        class.subject
+                      }}</span>
+                      -
+                      <span class="!text-red" style="color: red">
+                        {{ class.term }}
+                      </span>
+                      <!-- /
+                      <span class="!text-red" style="color: red">
+                        {{ class.section }} 
+                      </span>-->
+                    </mat-option>
+                  </ng-container>
+                </mat-select>
+
+                <mat-icon matSuffix class="px-2">arrow_drop_down</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Audit Trail -->
+      <div class="flex align-middle items-center primary-heading">
+        <div class="audit cursor-pointer">
+          <!-- <span>{{item.label}}</span> -->
+          <!-- <div class="image-div">
+            <img src="assets/translate.png" class="earth" />
+          </div> -->
+          <div>
+            <span class="audit-span underline"><u>Audit trail</u></span>
+          </div>
+
+          <div
+            style="text-align: center"
+            class="lt-md:absolute lt-md:-right-2 lt-md:top-3"
+          >
+            <mat-icon class="three-dot">more_vert</mat-icon>
+            <!-- <mat-menu #menu>
+              <button mat-menu-item disabled="true" style="text-align: center">
+                <img
+                  src="assets/search1.png"
+                  style="width: 2rem; height: 2rem"
+                />
+                <span>Audit trail</span>
+              </button> -->
+            <!-- <select name="country" id="" mat-menu-item >
+                      <option value="">Select lang</option>
+                      <option value="" *ngFor="let option of langList">{{option.name}}</option>
+                    </select> -->
+            <!-- </mat-menu> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+
+  <!-- Step 1 -->
+  <section class="mt-2">
+    <div class="flex gap-1 items-center">
+      <mat-label class="w-[50px] text-[16px] font-semibold">Step 1:</mat-label>
+      <mat-label class="flex primary-heading break-words"
+        >Select From the following WOW Videos</mat-label
+      >
+    </div>
+    <div class="flex gap-1 items-center flex-wrap">
+      <!-- <mat-label class="text-xs flex"
+        >Please select the Relevent Syllabus of your interest from:</mat-label
+      > -->
+      <!-- Drop Down for Select Syllabus-->
+      <div
+        class="flex gap-1 xs:w-full lt-lg:flex-col w-[60%] items-center mt-3"
+      >
+        <!-- <div class="flex justify-center flex-col first-div">
+          <span class="text-[14px] ml-3"
+            ><b
+              >Please Select the Relevant Syllabus of your interest from:</b
+            ></span
+          >
+        </div> -->
+        <div
+          class="flex justify-center flex-col items-center xs:w-full gt-xs:w-[100%] relative second-div"
+        >
+          <div
+            class="cursor-pointer absolute top-0 flex items-center px-3 h-full w-full"
+            (click)="selectRef3.open()"
+          >
+            <mat-label
+              *ngIf="selectedOption3"
+              style="
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              "
+              ><span class="!text-red" style="color: red">{{
+                selectedOption3.courseSubjectName
+              }}</span>
+              -
+              <span class="!text-red" style="color: red">
+                {{ selectedOption3.courseSubjectType }}
+              </span>
+              - {{ selectedOption.educationalInstituteName }}
+              <span class="!text-red" style="color: red">
+                {{ selectedOption3.country }}
+              </span>
+            </mat-label>
+          </div>
+
+          <mat-form-field
+            appearance="outline"
+            class="w-full component--mat-form-field__custom-input absolute top-0"
+          >
+            <mat-label
+              >Please Select the Relevant Syllabus of your interest
+              from:</mat-label
+            >
+            <mat-select
+              #selectRef3
+              appearance="outline"
+              placeholder="Please Select the Relevant Syllabus of your interest from:"
+              [(value)]="selectedOption3"
+              (selectionChange)="onSelectSelectedItem(selectedOption3)"
+              style="visibility: hidden"
+              required
+            >
+              <ng-container *ngFor="let item of syllabus">
+                <mat-option [value]="item"
+                  ><span class="!text-red" style="color: red">
+                    {{ item.courseSubjectName }}
+                  </span>
+                  -
+                  <span class="!text-red" style="color: red">
+                    {{ item.courseSubjectType }}
+                  </span>
+                  - {{ item.educationalInstituteName }}
+                  <span class="!text-red" style="color: red">
+                    {{ item.country }}
+                  </span>
+                </mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-icon matSuffix class="px-2">arrow_drop_down</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-label class="flex primary-heading underline cursor-pointer mt-2"
+        >EDIT Global Course / Subject of Your Interest</mat-label
+      >
+    </div>
+    <!-- Tree View for Syllabus -->
+    <div class="mt-[15px] w-full gt-sm:w-[50%]">
+      <div>
+        <mat-tree
+          #tree
+          [dataSource]="nestedDataSource"
+          [treeControl]="nestedTreeControl"
+          class="example-tree mat-tree-position"
+          style="
+            border: 0.5px solid;
+            height: 250px;
+            overflow: auto;
+            border-radius: 5px;
+          "
+        >
+          <!-- Without Children -->
+          <mat-tree-node *matTreeNodeDef="let node">
+            <li
+              class="mat-tree-node"
+              [ngStyle]="{
+                background:
+                  checklistSelection.isSelected(node) === true
+                    ? 'aliceblue'
+                    : 'inherit'
+              }"
+            >
+              <!-- <mat-checkbox 
+                class="checklist-leaf-node" 
+                (click)="$event.stopPropagation()" 
+                [checked]="checklistSelection.isSelected(node)" 
+                (change)="$event ? todoLeafItemSelectionToggle(node) : null" 
+                [value]="node.category_name" 
+                style="left: 10px" 
+                ><span class="txtColor"> 
+                  {{ node.category_name }} 
+                </span></mat-checkbox 
+              > -->
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [checked]="checklistSelection.isSelected(node)"
+                (change)="todoLeafItemSelectionToggle(node)"
+                style="left: 10px"
+                ><span class="txtColor">
+                  {{ node.user_category_name }}
+                </span></mat-checkbox
+              >
+              <!-- {{ descendantsAllSelected(node) }} -->
+            </li>
+          </mat-tree-node>
+
+          <!-- With Children -->
+          <mat-nested-tree-node
+            *matTreeNodeDef="let node; when: hasNestedChild"
+          >
+            <li
+              [ngStyle]="{
+                background:
+                  descendantsAllSelected(node) == true ? 'aliceblue' : 'inherit'
+              }"
+            >
+              <div class="mat-tree-node">
+                <button
+                  mat-icon-button
+                  matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.Name"
+                >
+                  <mat-icon class="mat-icon-rtl-mirror">
+                    {{
+                      nestedTreeControl.isExpanded(node)
+                        ? "expand_more"
+                        : "chevron_right"
+                    }}
+                  </mat-icon>
+                </button>
+                <mat-checkbox
+                  [checked]="descendantsAllSelected(node)"
+                  [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="todoItemSelectionToggle(node)"
+                  >{{ node.user_category_name }}</mat-checkbox
+                >
+                <!-- {{ descendantsAllSelected(node) }} -->
+              </div>
+              <ul
+                [class.example-tree-invisible]="
+                  !nestedTreeControl.isExpanded(node)
+                "
+              >
+                <ng-container matTreeNodeOutlet></ng-container>
+              </ul>
+            </li>
+          </mat-nested-tree-node>
+        </mat-tree>
+      </div>
+    </div>
+    <!-- Tree view end -->
+    <div class="flex gap-1 mt-2 flex-wrap items-center">
+      <span class="">List of WOW Videos relevant to the syllabus: </span>
+      <span class="text-sm red-heading">
+        History - Class - VI - Term 1 > Unit 1 - Geometry, Unit 2 - Trigonometry
+        > Lesson 1 - Circles
+      </span>
+    </div>
+    <!-- Button -->
+    <div class="flex gap-2">
+      <div class="py-4">
+        <button class="primary-button" mat-raised-button>Select</button>
+      </div>
+      <div class="py-4">
+        <button class="primary-button" mat-raised-button>
+          Acces WOW Video
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="text-xs flex w-[70px]">
+        <mat-label>Sort By:</mat-label>
+      </div>
+      <div class="w-full gt-sm:w-[50%]">
+        <mat-form-field
+          appearance="outline"
+          class="w-full gt-sm:w-[100%] xs:w-[100%] component--mat-form-field__custom-input component--mat-country_input__custom-style"
+        >
+          <mat-label class="font-medium-in-size"
+            >Your Own WOW Videos on Top
+          </mat-label>
+          <mat-select
+            appearance="outline"
+            placeholder="choose your qualification"
+            
+          >
+            <!-- <mat-option>--</mat-option> -->
+            <mat-option *ngFor="let sort of sortBy" [value]="sort.value">
+              {{ sort.value }}
+            </mat-option>
+          </mat-select>
+          <!-- <mat-error>choose an option</mat-error> -->
+          <!-- <mat-error
+          *ngIf="
+            firstFormGroup.get('qualification').hasError('invalidValue')
+          "
+          >choose any other option</mat-error
+        > -->
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- WOW video table  -->
+    <div>
+      <div class="mat-elevation-z8 mt-2 table-responsive w-fit lt-md:w-full">
+        <div id="pdfTable">
+          <table
+            id="excel_table"
+            matSort
+            mat-table
+            #table
+            [dataSource]="dataSource"
+            class="w-full gt-xs:w-full mat-elevation-z8 component--mat-table__custom-table checklist-table table-bordered table-sm block"
+          >
+            <!-- Checkbox Column -->
+            <!-- <ng-container matColumnDef="select">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="width: 10px; max-width: 20px; word-wrap: break-word"
+              >
+                <mat-checkbox
+                  class="ml-1"
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                >
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox
+                  class="ml-1"
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"
+                >
+                </mat-checkbox>
+              </td>
+            </ng-container> -->
+
+            <!-- Radio Button -->
+            <ng-container matColumnDef="radio_btn">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="min-width: 60px; max-width: 70px; word-wrap: break-word"
+              ></th>
+              <td mat-cell *matCellDef="let element">
+                <mat-radio-button> </mat-radio-button>
+              </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container
+              matColumnDef="wowVideo"
+              style="border-right: 1px solid #9a9a9a"
+            >
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  min-width: 200px;
+                  max-width: 300px;
+                  word-wrap: break-word;
+                "
+              >
+                WOW Video
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div class="flex justify-end flex-col">
+                  <div><img src="{{ element.wow_image }}" alt="" /></div>
+                  <div class="flex justify-end p-2">
+                    <button mat-raised-button class="red-button h-[25px]">
+                      NEW
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="facultyRating">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  min-width: 150px;
+                  max-width: 200px;
+                  word-wrap: break-word;
+                "
+              >
+                Avg Global Teaching Faculty Rating
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <form [formGroup]="form">
+                  <div class="stars">
+                    <ngx-star-rating
+                      formControlName="rating1"
+                      [id]="'rating1'"
+                    ></ngx-star-rating>
+                  </div>
+                </form>
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="unresolvedFlags">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  min-width: 150px;
+                  max-width: 200px;
+                  word-wrap: break-word;
+                "
+              >
+                Has Unresolved Flags?
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.unresolved_flags }}
+              </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="subscriptionCharge">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  min-width: 150px;
+                  max-width: 200px;
+                  word-wrap: break-word;
+                "
+              >
+                Subscription Charges Per User per Day
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.subscription_charges }}
+                <span class="red-heading">INR</span>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div>
+          <mat-paginator
+            class="component--mat-pagination__size"
+            #paginator
+            #paginatorElement
+            [length]="totalRows"
+            [pageIndex]="currentPage"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="pageChanged($event)"
+            [allValue]="paginator.length"
+            appAddAllToPaginator
+          >
+          </mat-paginator>
+        </div>
+
+        <div class="flex bg-white-black">
+          <div class="custom-mat-floating-label">
+            <mat-form-field
+              appearance="outline"
+              class="component--mat-form-field__custom-input pl-2"
+            >
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                (keyup)="applyFilter($event)"
+                #input
+                placeholder="Records shown in page"
+              />
+            </mat-form-field>
+          </div>
+          <div class="w-full flex justify-end">
+            <span class="p-5 export-btn" [matMenuTriggerFor]="menu"
+              >Export</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="downloadAsPDF()">
+        <mat-icon>picture_as_pdf</mat-icon>
+        <span>Print / Export PDF</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.xlsx')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export SpreadSheet</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.csv')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export csv File</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.json')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export json</span>
+      </button>
+    </mat-menu>
+    <!-- Table End -->
+  </section>
+
+  <!-- Step 2 -->
+  <section class=" mt-5">
+    <mat-divider ></mat-divider>
+    <div class="flex gap-1 items-center mt-2">
+      <mat-label class="text-[16px] font-semibold">Step 2 :</mat-label>
+      <mat-label class="primary-heading"> Share with Users </mat-label>
+    </div>
+    <!-- Edit WOW Video Name -->
+    <div class="name xs:w-full">
+      <mat-form-field
+        appearance="outline"
+        class="w-[30%] xs:w-[100%] component--mat-form-field__custom-input mt-2"
+      >
+        <mat-label class="font-medium-in-size">Edit WOW Video Name:</mat-label>
+        <input matInput placeholder="" required />
+        <mat-error> Name is required </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Edit and Display WOW videos Description  -->
+    <div class="flex gap-2 text-sm">
+      <div>
+        <mat-checkbox class="example-margin w-full break-words align-top">
+        </mat-checkbox>
+      </div>
+      <div>
+        <mat-label class="break-words"
+          >Edit and Display WOW Videos Description: (OPTIONAL)</mat-label
+        >
+      </div>
+    </div>
+    <div class="text-editor w-[50%] xs:w-full">
+      <ckeditor
+        [(ngModel)]="description"
+        #myckeditor="ngModel"
+        name="myckeditor"
+        required
+        [config]="ckeConfig"
+        debounce="500"
+      >
+      </ckeditor>
+    </div>
+    <!-- Customize sharing with students -->
+    <div class="flex gap-2 mt-2 text-sm">
+      <div>
+        <mat-checkbox class="example-margin"> </mat-checkbox>
+      </div>
+      <div class="flex flex-col leading-[10px] mt-2">
+        <div class="flex gap-2 flex-wrap">
+          <span class="primary-heading">Customize sharing with</span>
+          <span class="red-heading">Student / Class 1 / Section A </span>
+          <span class="primary-heading">registered in</span>
+          <span class="red-heading">History - Class - VI - Term 1</span>
+        </div>
+        <div>
+          <p class="text-xs break-words mt-1">
+            You can customize the sharing of the above WOW Video to specific set
+            of users by un-selecting users from the table below.<br />
+            By default, all new users added to the above category will have
+            access to the WOW Video.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Table -->
+    <div>
+      <div
+        class="mat-elevation-z8 mt-2 table-responsive w-fit gt-sm:w-fit xs:w-fit"
+      >
+        <div id="pdfTable">
+          <table
+            id="excel_table"
+            matSort
+            mat-table
+            #table
+            [dataSource]="dataSource2"
+            class="w-full mat-elevation-z8 component--mat-table__custom-table checklist-table table-bordered table-sm block"
+          >
+            <!-- Checkbox Column -->
+            <!-- <ng-container matColumnDef="select">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="min-width: 80px; max-width: 20px; word-wrap: break-word"
+              >
+                <mat-checkbox
+                  class="ml-1"
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                >
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox
+                  class="ml-1"
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"
+                >
+                </mat-checkbox>
+              </td>
+            </ng-container> -->
+
+            <!-- Position Column -->
+            <!-- <ng-container
+              matColumnDef="position"
+              style="border-right: 1px solid #9a9a9a"
+            >
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="width: 40px; max-width: 40px; word-wrap: break-word"
+              >
+                No.
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+            </ng-container> -->
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  text-align: center;
+                  min-width: 297px;
+                  max-width: 100%;
+                  word-wrap: break-word;
+                "
+              >
+                Users List with Access to the above WOW Video
+              </th>
+              <td mat-cell *matCellDef="let element" style="text-align: left">
+                <mat-checkbox
+                  class="ml-1 pr-3"
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(element) : null"
+                  [checked]="selection.isSelected(element)"
+                >
+                </mat-checkbox>
+
+                {{ element.name }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <!-- <ng-container matColumnDef="weight">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="width: 70px; max-width: 80px; word-wrap: break-word"
+              >
+                Weight
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+            </ng-container> -->
+
+            <!-- <ng-container matColumnDef="radio_btn">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="width: 60px; max-width: 70px; word-wrap: break-word"
+              >
+                Radio btn
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-radio-button> </mat-radio-button>
+              </td>
+            </ng-container> -->
+
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="symbol">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="width: 70px; max-width: 70px; word-wrap: break-word"
+              >
+                Symbol
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+            </ng-container> -->
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns1; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+          </table>
+        </div>
+        <div>
+          <mat-paginator
+            class="component--mat-pagination__size"
+            #paginator
+            #paginatorElement
+            [length]="totalRows"
+            [pageIndex]="currentPage"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="pageChanged($event)"
+            [allValue]="paginator.length"
+            appAddAllToPaginator
+          >
+          </mat-paginator>
+        </div>
+
+        <div class="flex bg-white-black">
+          <div class="custom-mat-floating-label">
+            <mat-form-field
+              appearance="outline"
+              class="component--mat-form-field__custom-input pl-2"
+            >
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                (keyup)="applyFilter($event)"
+                #input
+                placeholder="Records shown in page"
+              />
+            </mat-form-field>
+          </div>
+          <div class="w-full flex justify-end">
+            <span class="p-5 export-btn" [matMenuTriggerFor]="menu"
+              >Export</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="downloadAsPDF()">
+        <mat-icon>picture_as_pdf</mat-icon>
+        <span>Print / Export PDF</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.xlsx')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export SpreadSheet</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.csv')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export csv File</span>
+      </button>
+      <button mat-menu-item (click)="exportReport('sample.json')">
+        <mat-icon>grid_on</mat-icon>
+        <span>Export json</span>
+      </button>
+    </mat-menu>
+
+ 
+      <div class="mt-5">
+        <mat-label class=" text-sm ">
+          Select Relevant Syllabus in
+          <span class="red-heading">History - Class - VI - Term 1</span>
+        </mat-label>
+      </div>
+    
+    <!-- Tree View for Syllabus -->
+    <mat-checkbox class="mt-3 text-sm">Select All</mat-checkbox>
+    <div class="mt-[15px] w-full gt-sm:w-[50%]">
+      <div>
+        <mat-tree
+          #tree
+          [dataSource]="nestedDataSource"
+          [treeControl]="nestedTreeControl"
+          class="example-tree mat-tree-position"
+          style="
+            border: 0.5px solid;
+            height: 250px;
+            overflow: auto;
+            border-radius: 5px;
+          "
+        >
+          <!-- Without Children -->
+          <mat-tree-node *matTreeNodeDef="let node">
+            <li
+              class="mat-tree-node"
+              [ngStyle]="{
+                background:
+                  checklistSelection.isSelected(node) === true
+                    ? 'aliceblue'
+                    : 'inherit'
+              }"
+            >
+              <!-- <mat-checkbox 
+                class="checklist-leaf-node" 
+                (click)="$event.stopPropagation()" 
+                [checked]="checklistSelection.isSelected(node)" 
+                (change)="$event ? todoLeafItemSelectionToggle(node) : null" 
+                [value]="node.category_name" 
+                style="left: 10px" 
+                ><span class="txtColor"> 
+                  {{ node.category_name }} 
+                </span></mat-checkbox 
+              > -->
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [checked]="checklistSelection.isSelected(node)"
+                (change)="todoLeafItemSelectionToggle(node)"
+                style="left: 10px"
+                ><span class="txtColor">
+                  {{ node.user_category_name }}
+                </span></mat-checkbox
+              >
+              <!-- {{ descendantsAllSelected(node) }} -->
+            </li>
+          </mat-tree-node>
+
+          <!-- With Children -->
+          <mat-nested-tree-node
+            *matTreeNodeDef="let node; when: hasNestedChild"
+          >
+            <li
+              [ngStyle]="{
+                background:
+                  descendantsAllSelected(node) == true ? 'aliceblue' : 'inherit'
+              }"
+            >
+              <div class="mat-tree-node">
+                <button
+                  mat-icon-button
+                  matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.Name"
+                >
+                  <mat-icon class="mat-icon-rtl-mirror">
+                    {{
+                      nestedTreeControl.isExpanded(node)
+                        ? "expand_more"
+                        : "chevron_right"
+                    }}
+                  </mat-icon>
+                </button>
+                <mat-checkbox
+                  [checked]="descendantsAllSelected(node)"
+                  [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="todoItemSelectionToggle(node)"
+                  >{{ node.user_category_name }}</mat-checkbox
+                >
+                <!-- {{ descendantsAllSelected(node) }} -->
+              </div>
+              <ul
+                [class.example-tree-invisible]="
+                  !nestedTreeControl.isExpanded(node)
+                "
+              >
+                <ng-container matTreeNodeOutlet></ng-container>
+              </ul>
+            </li>
+          </mat-nested-tree-node>
+        </mat-tree>
+      </div>
+    </div>
+    <!-- Tree view end -->
+    <!-- Button -->
+    <div class="flex gap-2 xs:gap-0 flex-wrap">
+      <div class="py-4 xs:py-2">
+        <button
+          class="primary-button"
+          mat-raised-button
+          (click)="prePayAndShareDialog()"
+        >
+          PRE PAY AND SHARE
+        </button>
+      </div>
+      <div class="py-4 xs:py-2">
+        <button class="primary-button" mat-raised-button>
+          SHARE without Pre Payment
+        </button>
+      </div>
+    </div>
+  </section>
+</main>

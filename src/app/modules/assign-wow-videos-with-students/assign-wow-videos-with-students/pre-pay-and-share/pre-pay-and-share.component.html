@@ -1,0 +1,271 @@
+<main class="overflow-hidden h-[600px]" *ngIf="true">
+  <mat-toolbar class="component--dialog-box__custom-toolbar w-full">
+    <span class="font-small-in-size"> Pre-Pay WOW Video User fees/day </span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="flex items-center justify-center">
+      <mat-icon (click)="onNoClick()">close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="h-[calc(100%_-_27px)] overflow-auto">
+    <section class="flex justify-between p-[8px] flex-wrap">
+      <div class="flex text-[16px] font-semibold">
+        <mat-label class="flex flex-wrap gap-2 xs:gap-0"
+          >As this WOW Video is chargeable at
+
+          <div class="flex items-center gap-2">
+            <span class="primary-heading">0.50 </span>
+            <span class="red-heading text-xs">INR/User</span>
+          </div></mat-label
+        >
+      </div>
+      <div class="text-[16px] font-semibold">
+        <mat-label class="flex flex-wrap gap-2"
+          >WOW Price:
+          <div class="flex items-center gap-2">
+            <span class="primary-heading">0.25 </span>
+            <span class="red-heading text-xs">INR/User</span>
+          </div></mat-label
+        >
+      </div>
+      <p>
+        <span class="primary-heading underline">
+          You have the option to pre - pay the same for the following selected
+          users from your WOW Wallet / GET Wallet. </span
+        ><span class="secondary-heading underline">
+          Moreover, the un-selected users shall have the option to pay from
+          their GET Wallet before accessing the above WOW Video.
+        </span>
+      </p>
+    </section>
+
+    <!-- Table -->
+    <div class="p-[8px] ">
+      <div
+        class="mat-elevation-z8 mt-2 table-responsive w-fit gt-xs:w-[260px] xs:w-[240px]"
+      >
+        <div id="pdfTable">
+          <table
+            id="excel_table"
+            matSort
+            mat-table
+            #table
+            [dataSource]="dataSource"
+            class="w-full gt-xs:w-full mat-elevation-z8 component--mat-table__custom-table checklist-table table-bordered table-sm block"
+          >
+            <!-- Checkbox Column -->
+            <!-- <ng-container matColumnDef="select">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="min-width: 80px; max-width: 20px; word-wrap: break-word"
+            >
+              <mat-checkbox
+                class="ml-1"
+                (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+              >
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox
+                class="ml-1"
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)"
+              >
+              </mat-checkbox>
+            </td>
+          </ng-container> -->
+
+            <!-- Position Column -->
+            <!-- <ng-container
+            matColumnDef="position"
+            style="border-right: 1px solid #9a9a9a"
+          >
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="width: 40px; max-width: 40px; word-wrap: break-word"
+            >
+              No.
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+          </ng-container> -->
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                style="
+                  text-align: center;
+                  min-width: 200px;
+                  max-width: 100%;
+                  word-wrap: break-word;
+                "
+              >
+                Users List with Access to the above WOW Video
+              </th>
+              <td mat-cell *matCellDef="let element" style="text-align: left">
+                <mat-checkbox
+                  class="ml-1 pr-3"
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(element) : null"
+                  [checked]="selection.isSelected(element)"
+                >
+                </mat-checkbox>
+
+                {{ element.name }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <!-- <ng-container matColumnDef="weight">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="width: 70px; max-width: 80px; word-wrap: break-word"
+            >
+              Weight
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+          </ng-container> -->
+
+            <!-- <ng-container matColumnDef="radio_btn">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="width: 60px; max-width: 70px; word-wrap: break-word"
+            >
+              Radio btn
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-radio-button> </mat-radio-button>
+            </td>
+          </ng-container> -->
+
+            <!-- Symbol Column -->
+            <!-- <ng-container matColumnDef="symbol">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="width: 70px; max-width: 70px; word-wrap: break-word"
+            >
+              Symbol
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+          </ng-container> -->
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div>
+          <mat-paginator
+            class="component--mat-pagination__size"
+            #paginator
+            #paginatorElement
+            [length]="totalRows"
+            [pageIndex]="currentPage"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="pageChanged($event)"
+            [allValue]="paginator.length"
+            appAddAllToPaginator
+          >
+          </mat-paginator>
+        </div>
+
+        <div class="flex w-fit bg-white-black xs:flex-wrap">
+          <div class="custom-mat-floating-label">
+            <mat-form-field
+              appearance="outline"
+              class="component--mat-form-field__custom-input pl-2"
+            >
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                (keyup)="applyFilter($event)"
+                #input
+                placeholder="Records shown in page"
+              />
+            </mat-form-field>
+          </div>
+          <div class="w-fit flex justify-end xs:justify-start items-center">
+            <span class="xs:p-2 export-btn" [matMenuTriggerFor]="menu"
+              >Export</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="p-[8px] text-sm">
+      <mat-divider></mat-divider>
+      <div>
+        <mat-label class="">
+          Click the following button, if you intend to pay a total of
+          <span class="primary-heading mr-2">25.00</span>
+          <span class="red-heading mr-2">INR</span>
+          <span>for the above selected </span>
+          <span class="primary-heading mr-2">100 </span>
+          <span class="red-heading">users </span>
+        </mat-label>
+      </div>
+      <div class="py-4 xs:py-2">
+        <button class="primary-button" mat-raised-button>
+          Pay from WOW Wallet
+        </button>
+      </div>
+      <mat-divider class="h-2"></mat-divider>
+      <div>
+        <mat-label class="">
+          Click the following button, if you intend to pay a total of
+          <span class="primary-heading mr-2">25.00</span>
+          <span class="red-heading mr-2">INR</span>
+          <span>for the above selected </span>
+          <span class="primary-heading mr-2">100 </span>
+          <span class="red-heading">users </span>
+        </mat-label>
+      </div>
+      <div class="py-4 xs:py-2">
+        <button class="primary-button" mat-raised-button>
+          Pay from GET Wallet
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <span class="primary-heading"
+          >Alternatively, you can cancel and let the above users make payment
+          from their respective wallets.</span
+        >
+      </div>
+      <div class="py-4 xs:py-2">
+        <button class="primary-button" mat-raised-button>Cancel</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="downloadAsPDF()">
+    <mat-icon>picture_as_pdf</mat-icon>
+    <span>Print / Export PDF</span>
+  </button>
+  <button mat-menu-item (click)="exportReport('sample.xlsx')">
+    <mat-icon>grid_on</mat-icon>
+    <span>Export SpreadSheet</span>
+  </button>
+  <button mat-menu-item (click)="exportReport('sample.csv')">
+    <mat-icon>grid_on</mat-icon>
+    <span>Export csv File</span>
+  </button>
+  <button mat-menu-item (click)="exportReport('sample.json')">
+    <mat-icon>grid_on</mat-icon>
+    <span>Export json</span>
+  </button>
+</mat-menu>

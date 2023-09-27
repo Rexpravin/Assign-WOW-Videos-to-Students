@@ -1,0 +1,32 @@
+.text-editor {
+    #cke_editor1 {
+      // height: 99% !important;
+      overflow: hidden;
+      .cke_inner {
+        // height: 100% !important;
+        // display: flex;
+        // flex-direction: column;
+        .cke_top {
+          border-bottom: 1px solid #d1d1d1;
+          background: #f8f8f8;
+          padding: 6px 8px 2px;
+          white-space: normal;
+        }
+  
+        #cke_1_contents {
+          height: 186px !important;
+          // height: calc(100% - 42px) !important;
+          // max-height: calc(80%) !important;
+  
+          // &::first-line {
+          //   background-color: yellow;
+          // }
+        }
+  
+        .cke_bottom {
+          display: none;
+        }
+      }
+    }
+  }
+  
