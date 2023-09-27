@@ -11,7 +11,6 @@ const routes: Routes = [
   },
   {
     path: 'assign-wow-videos-with-students',
-    title: 'WOW Videos',
     component: AssignWowVideosWithStudentsComponent,
   },
   {
