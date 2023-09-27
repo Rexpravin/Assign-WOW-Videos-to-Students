@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AssignWowVideosWithStudentsComponent,
   },
   {
-    path: 'pre-pay-and-share',
+    path: 'pre-pay-and',
     component: PrePayAndShareComponent,
   },
 ];
